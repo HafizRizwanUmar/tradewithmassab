@@ -94,6 +94,16 @@ button {
   padding: 0 var(--space-sm);
 }
 
+.text-center {
+  text-align: center;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  margin-bottom: 3rem;
+  color: var(--text-primary);
+}
+
 .btn-neon {
   background-color: var(--accent-neon);
   color: var(--text-dark);
