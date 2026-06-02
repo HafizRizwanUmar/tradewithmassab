@@ -18,8 +18,8 @@ const Navbar = () => {
         </div>
         
         <div className="nav-actions">
-          <button className="btn-dark">Student Login</button>
-          <button className="btn-neon">Enroll Now</button>
+          <button className="btn-dark">Contact Us</button>
+          <button className="btn-neon">Register</button>
         </div>
         
       </div>
