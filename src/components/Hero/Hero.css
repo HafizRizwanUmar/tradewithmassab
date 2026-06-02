@@ -46,20 +46,25 @@
   width: 100%;
   margin-top: 4rem;
   position: relative;
-  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
 }
 
 .hero-features {
-  display: inline-flex;
-  gap: 1rem;
-  animation: marquee-left-to-right 20s linear infinite;
+  display: flex;
+  gap: 1.5rem;
   width: max-content;
+}
+
+.marquee-group {
+  display: flex;
+  gap: 1.5rem;
+  animation: marquee-left-to-right 30s linear infinite;
 }
 
 @keyframes marquee-left-to-right {
   0% {
-    transform: translateX(-50%);
+    transform: translateX(calc(-100% - 1.5rem));
   }
   100% {
     transform: translateX(0);

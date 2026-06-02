@@ -29,7 +29,7 @@ const Hero = () => {
           <div className="hero-features-container">
             <div className="hero-features">
               {[...Array(2)].map((_, index) => (
-                <React.Fragment key={index}>
+                <div key={index} className="marquee-group">
                   <div className="feature-chip">
                     <span className="chip-icon">
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
@@ -55,14 +55,14 @@ const Hero = () => {
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 12c-2-2.67-4-4-6-4a4 4 0 1 0 0 8c2 0 4-1.33 6-4Zm0 0c2 2.67 4 4 6 4a4 4 0 0 0 0-8c-2 0-4 1.33-6 4Z"></path></svg>
                     </span> Lifetime Access
                   </div>
-                </React.Fragment>
+                </div>
               ))}
             </div>
           </div>
         </div>
         
         <div className="hero-image-wrapper">
-          <img src="/trader_portrait.png" alt="Trader Portrait" className="hero-image" />
+          <img src="/trader_portrait_neon.png" alt="Trader Portrait" className="hero-image" />
         </div>
         
       </div>
