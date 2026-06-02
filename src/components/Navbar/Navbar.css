@@ -1,0 +1,65 @@
+.navbar {
+  padding: 1.5rem 0;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+  border-bottom: var(--border-subtle);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: baseline;
+}
+
+.logo-text {
+  color: var(--accent-neon);
+}
+
+.logo-dot {
+  color: var(--accent-neon);
+  margin: 0 1px;
+}
+
+.logo-club {
+  color: var(--accent-neon);
+  font-size: 1rem;
+}
+
+.nav-links-center {
+  display: flex;
+  gap: 2rem;
+  background-color: var(--bg-secondary);
+  padding: 8px 24px;
+  border-radius: 30px;
+  border: var(--border-subtle);
+}
+
+.nav-links-center a {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.nav-links-center a:hover {
+  color: var(--text-primary);
+}
+
+.nav-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .nav-links-center {
+    display: none;
+  }
+}

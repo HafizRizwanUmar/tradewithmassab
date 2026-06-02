@@ -1,0 +1,152 @@
+.how-it-works {
+  padding: 5rem 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--text-primary);
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.step-card {
+  background-color: var(--bg-secondary);
+  border: var(--border-subtle);
+  border-radius: var(--border-radius-md);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.step-label {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.step-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  line-height: 1.4;
+}
+
+.step-graphic {
+  background-color: #151515;
+  border-radius: 8px;
+  margin-top: auto;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Step 1 Graphic */
+.mock-dropdown {
+  background-color: #1f1f1f;
+  color: var(--text-secondary);
+  padding: 10px 15px;
+  border-radius: 6px;
+  width: 80%;
+  margin-bottom: 8px;
+  font-size: 0.8rem;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mock-dropdown.active {
+  background-color: #2a2a2a;
+  color: var(--text-primary);
+  border: 1px solid rgba(0, 255, 65, 0.3);
+}
+
+.cursor-mock {
+  position: absolute;
+  right: -5px;
+  bottom: -10px;
+}
+
+/* Step 2 Graphic */
+.progress-widget {
+  background-color: #1a1a1a;
+  border: var(--border-subtle);
+  padding: 1.5rem;
+  border-radius: 12px;
+  width: 85%;
+}
+
+.progress-widget strong {
+  font-size: 0.9rem;
+  display: block;
+}
+
+.progress-widget p {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.progress-bar-container {
+  height: 6px;
+  background-color: #333;
+  border-radius: 3px;
+  margin-bottom: 8px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: var(--accent-neon);
+  border-radius: 3px;
+}
+
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+}
+
+/* Step 3 Graphic */
+.arc-step {
+  width: 150px;
+  height: 75px;
+  border-top-left-radius: 75px;
+  border-top-right-radius: 75px;
+  border: 18px solid var(--accent-neon);
+  border-bottom: 0;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+.arc-text-step {
+  position: absolute;
+  bottom: -20px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.mt-lg {
+  margin-top: 4rem;
+}
+
+@media (max-width: 900px) {
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+}

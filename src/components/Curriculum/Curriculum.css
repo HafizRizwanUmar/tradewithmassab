@@ -1,0 +1,106 @@
+.curriculum-section {
+  padding: 8rem 0;
+  position: relative;
+}
+
+.curriculum-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 4rem;
+  align-items: flex-start;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.curriculum-title {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  /* Align title slightly down to match the visual alignment with the first card's content */
+  margin-top: 1.5rem;
+}
+
+.curriculum-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.curriculum-card {
+  background-color: #0f0f0f;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.curriculum-card:hover {
+  background-color: #141414;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.card-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #00ff41;
+  font-family: 'Courier New', Courier, monospace; /* To closely approximate the slashed zero tech look if font-variant fails */
+  line-height: 1;
+  margin-top: 0.1rem;
+}
+
+/* Specific styling for the zero to give it a slash if possible */
+.card-number span.zero {
+  position: relative;
+  display: inline-block;
+}
+
+.card-number span.zero::after {
+  content: '';
+  position: absolute;
+  top: 15%;
+  bottom: 15%;
+  left: 45%;
+  width: 2px;
+  background-color: #00ff41;
+  transform: rotate(25deg);
+}
+
+.card-content {
+  flex: 1;
+}
+
+.card-title {
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.card-desc {
+  color: #8c8c8c;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+@media (max-width: 900px) {
+  .curriculum-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .curriculum-title {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .curriculum-card {
+    padding: 1.5rem;
+    gap: 1.25rem;
+  }
+}
