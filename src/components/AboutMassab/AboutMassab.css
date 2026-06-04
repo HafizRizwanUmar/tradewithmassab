@@ -1,0 +1,301 @@
+/* ===== ABOUT MASSAB SECTION ===== */
+.about-section {
+  padding: 7rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle right-side ambient glow */
+.about-section::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -100px;
+  transform: translateY(-50%);
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(0,255,65,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Two-column grid ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+/* ===== LEFT: PORTRAIT ===== */
+.about-portrait-col {
+  position: relative;
+  height: 580px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* Neon glow orb */
+.about-glow-orb {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0,255,65,0.16) 0%, transparent 70%);
+  filter: blur(55px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Portrait — background-image with gradient masks to erase white bg */
+.about-portrait-img {
+  position: absolute;
+  inset: 0;
+  background-image: url('/trader_portrait_neon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  z-index: 1;
+
+  /* Two gradient masks composited: horizontal fade + vertical bottom fade */
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%),
+    linear-gradient(to bottom, black 50%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%),
+    linear-gradient(to bottom, black 50%, transparent 100%);
+  mask-composite: intersect;
+}
+
+/* Floating name badge */
+.about-name-card {
+  position: absolute;
+  bottom: 8%;
+  right: -16px;
+  z-index: 4;
+  background: rgba(8, 8, 8, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid #222;
+  border-radius: 14px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  animation: float-badge 4s ease-in-out infinite;
+}
+
+@keyframes float-badge {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+.about-name-card-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-image: url('/trader_portrait_neon.png');
+  background-size: cover;
+  background-position: top center;
+  border: 2px solid var(--accent-neon);
+  flex-shrink: 0;
+}
+
+.about-name-card-name {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  white-space: nowrap;
+}
+
+.about-name-card-title {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.68rem;
+  color: var(--accent-neon);
+  font-weight: 600;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+
+/* ===== RIGHT: CONTENT ===== */
+.about-content-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Label */
+.about-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent-neon);
+  background: rgba(0,255,65,0.06);
+  border: 1px solid rgba(0,255,65,0.18);
+  padding: 5px 14px;
+  border-radius: 20px;
+  width: fit-content;
+  margin-bottom: 1.2rem;
+}
+
+/* Heading */
+.about-heading {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800;
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 1.4rem;
+}
+
+.about-heading-accent {
+  color: var(--accent-neon);
+}
+
+/* Bio paragraphs */
+.about-bio {
+  font-size: 0.97rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.about-bio strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Highlights list */
+.about-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 1.4rem 0 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.about-highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: #c0c0c0;
+  line-height: 1.5;
+}
+
+.about-highlight-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Credentials grid */
+.about-credentials {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.85rem;
+  margin-bottom: 2rem;
+}
+
+.about-cred-card {
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  border-radius: 12px;
+  padding: 1.1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-cred-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-neon), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.about-cred-card:hover {
+  border-color: #2a2a2a;
+  transform: translateY(-4px);
+}
+
+.about-cred-card:hover::before { opacity: 1; }
+
+.about-cred-icon {
+  color: var(--accent-neon);
+  display: flex;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.about-cred-value {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  letter-spacing: -0.5px;
+}
+
+.about-cred-label {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  line-height: 1.3;
+}
+
+/* CTA button */
+.about-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  padding: 13px 26px;
+  border-radius: 8px;
+  font-weight: 700;
+  width: fit-content;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .about-credentials {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .about-portrait-col {
+    height: 420px;
+  }
+  .about-name-card {
+    right: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-section { padding: 4rem 0; }
+  .about-portrait-col { height: 320px; }
+  .about-credentials { grid-template-columns: repeat(2, 1fr); }
+}

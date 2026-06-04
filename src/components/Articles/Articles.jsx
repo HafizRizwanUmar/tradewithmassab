@@ -1,0 +1,103 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { articles } from '../../data/articles';
+import './Articles.css';
+
+const categoryColors = {
+  Strategy: '#00ff41',
+  'Risk Management': '#f59e0b',
+  Beginner: '#60a5fa',
+  'Technical Analysis': '#a78bfa',
+  Psychology: '#f87171',
+  Commodities: '#fbbf24',
+};
+
+const ArticleCard = ({ article }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/articles/${article.slug}`);
+  };
+
+  const color = categoryColors[article.category] || '#00ff41';
+
+  return (
+    <article className="article-card" onClick={handleClick} id={`article-card-${article.slug}`}>
+      <div className="article-card-image-wrapper">
+        <div className="article-card-image" style={{ background: `linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%)` }}>
+          <div className="article-card-image-overlay">
+            <span className="article-card-icon">
+              {article.category === 'Strategy' && '📊'}
+              {article.category === 'Risk Management' && '🛡️'}
+              {article.category === 'Beginner' && '🌱'}
+              {article.category === 'Technical Analysis' && '📈'}
+              {article.category === 'Psychology' && '🧠'}
+              {article.category === 'Commodities' && '🥇'}
+            </span>
+          </div>
+        </div>
+        <div className="article-card-category-badge" style={{ background: color, color: '#000' }}>
+          {article.category}
+        </div>
+      </div>
+
+      <div className="article-card-body">
+        <div className="article-card-meta">
+          <span className="article-meta-date">{article.date}</span>
+          <span className="article-meta-dot">·</span>
+          <span className="article-meta-read">{article.readTime}</span>
+        </div>
+
+        <h3 className="article-card-title">{article.title}</h3>
+        <p className="article-card-excerpt">{article.excerpt}</p>
+
+        <div className="article-card-tags">
+          {article.tags.slice(0, 3).map((tag) => (
+            <span key={tag} className="article-tag" style={{ borderColor: color + '44', color: color }}>
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <div className="article-card-footer">
+          <span className="article-read-more">
+            Read Article
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+      </div>
+    </article>
+  );
+};
+
+const Articles = () => {
+  return (
+    <section className="articles-section" id="articles">
+      <div className="container">
+        <div className="articles-header">
+          <div className="articles-label">
+            <span className="label-dot"></span>
+            Trading Insights
+          </div>
+          <h2 className="section-title">
+            Learn from the{' '}
+            <span className="articles-highlight">Best in the Game</span>
+          </h2>
+          <p className="articles-subtitle">
+            Deep-dive articles on strategy, risk management, psychology, and everything you need to trade like a professional.
+          </p>
+        </div>
+
+        <div className="articles-grid">
+          {articles.map((article) => (
+            <ArticleCard key={article.id} article={article} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Articles;

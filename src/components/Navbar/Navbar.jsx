@@ -11,8 +11,10 @@ const Navbar = () => {
         </div>
         
         <div className="nav-links-center">
-          <a href="#curriculum">Curriculum</a>
-          <a href="#features">Features</a>
+          <a href="#results">Results</a>
+          <a href="#about">About</a>
+          <a href="#features">Why Us</a>
+          <a href="#articles">Articles</a>
           <a href="#pricing">Pricing</a>
           <a href="#community">Community</a>
         </div>
