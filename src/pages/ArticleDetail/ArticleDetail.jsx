@@ -12,13 +12,13 @@ const categoryColors = {
   Commodities: '#fbbf24',
 };
 
-const categoryIcons = {
-  Strategy: '📊',
-  'Risk Management': '🛡️',
-  Beginner: '🌱',
-  'Technical Analysis': '📈',
-  Psychology: '🧠',
-  Commodities: '🥇',
+const categoryImages = {
+  Strategy: '/article-smc.jpg',
+  'Risk Management': '/article-risk.jpg',
+  Beginner: '/article-forex.jpg',
+  'Technical Analysis': '/article-ta.jpg',
+  Psychology: '/article-psychology.jpg',
+  Commodities: '/article-gold.jpg',
 };
 
 // Simple markdown-like renderer
@@ -181,7 +181,34 @@ const ArticleDetail = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [slug]);
+    if (article) {
+      // Dynamic page title & SEO meta tags
+      document.title = `${article.title} | TradeWithMassab`;
+      const setMeta = (name, content, prop = false) => {
+        const attr = prop ? 'property' : 'name';
+        let el = document.querySelector(`meta[${attr}="${name}"]`);
+        if (!el) {
+          el = document.createElement('meta');
+          el.setAttribute(attr, name);
+          document.head.appendChild(el);
+        }
+        el.setAttribute('content', content);
+      };
+      setMeta('description', article.excerpt);
+      setMeta('keywords', article.tags.join(', ') + ', TradeWithMassab, forex, trading');
+      setMeta('og:title', `${article.title} | TradeWithMassab`, true);
+      setMeta('og:description', article.excerpt, true);
+      setMeta('og:image', article.image, true);
+      setMeta('og:type', 'article', true);
+      setMeta('twitter:title', `${article.title} | TradeWithMassab`);
+      setMeta('twitter:description', article.excerpt);
+      setMeta('twitter:image', article.image);
+    }
+    return () => {
+      // Restore home page title on unmount
+      document.title = 'TradeWithMassab | Professional Trading Mentorship & Signals';
+    };
+  }, [slug, article]);
 
   if (!article) {
     return (
@@ -195,7 +222,7 @@ const ArticleDetail = () => {
   }
 
   const color = categoryColors[article.category] || '#00ff41';
-  const icon = categoryIcons[article.category] || '📰';
+  const catImage = categoryImages[article.category] || article.image;
 
   const otherArticles = articles.filter((a) => a.slug !== slug).slice(0, 3);
 
@@ -226,7 +253,7 @@ const ArticleDetail = () => {
           </button>
 
           <div className="article-hero-category" style={{ color, borderColor: color + '44' }}>
-            <span>{icon}</span>
+            <img src={catImage} alt={article.category} className="article-hero-cat-img" />
             {article.category}
           </div>
 
@@ -263,12 +290,11 @@ const ArticleDetail = () => {
         </div>
       </header>
 
-      {/* Divider */}
-      <div className="article-icon-banner">
-        <div className="container">
-          <div className="article-icon-circle" style={{ boxShadow: `0 0 60px ${color}33` }}>
-            <span>{icon}</span>
-          </div>
+      {/* Article Image Banner */}
+      <div className="article-image-banner">
+        <div className="article-image-banner-inner" style={{ boxShadow: `0 0 80px ${color}33` }}>
+          <img src={article.image} alt={article.title} className="article-banner-img" />
+          <div className="article-banner-overlay" style={{ background: `linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 60%)` }} />
         </div>
       </div>
 
@@ -291,11 +317,11 @@ const ArticleDetail = () => {
               </div>
 
               <div className="article-sidebar-card">
-                <h4 className="sidebar-title">📚 More Articles</h4>
+                <h4 className="sidebar-title">More Articles</h4>
                 <div className="sidebar-article-list">
                   {otherArticles.map((a) => (
                     <Link key={a.id} to={`/articles/${a.slug}`} className="sidebar-article-item">
-                      <span className="sidebar-article-icon">{categoryIcons[a.category]}</span>
+                      <img src={a.image} alt={a.category} className="sidebar-article-thumb" />
                       <div>
                         <p className="sidebar-article-title">{a.title}</p>
                         <span className="sidebar-article-read">{a.readTime}</span>
@@ -318,10 +344,15 @@ const ArticleDetail = () => {
               const aColor = categoryColors[a.category] || '#00ff41';
               return (
                 <Link to={`/articles/${a.slug}`} key={a.id} className="article-more-card">
-                  <span className="article-more-card-icon">{categoryIcons[a.category]}</span>
-                  <div className="article-more-card-category" style={{ color: aColor }}>{a.category}</div>
-                  <h3 className="article-more-card-title">{a.title}</h3>
-                  <span className="article-more-card-read">{a.readTime}</span>
+                  <div className="article-more-card-img-wrap">
+                    <img src={a.image} alt={a.title} className="article-more-card-img" />
+                    <div className="article-more-card-img-overlay" />
+                  </div>
+                  <div className="article-more-card-body">
+                    <div className="article-more-card-category" style={{ color: aColor }}>{a.category}</div>
+                    <h3 className="article-more-card-title">{a.title}</h3>
+                    <span className="article-more-card-read">{a.readTime}</span>
+                  </div>
                 </Link>
               );
             })}

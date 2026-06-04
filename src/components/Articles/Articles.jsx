@@ -24,17 +24,13 @@ const ArticleCard = ({ article }) => {
   return (
     <article className="article-card" onClick={handleClick} id={`article-card-${article.slug}`}>
       <div className="article-card-image-wrapper">
-        <div className="article-card-image" style={{ background: `linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%)` }}>
-          <div className="article-card-image-overlay">
-            <span className="article-card-icon">
-              {article.category === 'Strategy' && '📊'}
-              {article.category === 'Risk Management' && '🛡️'}
-              {article.category === 'Beginner' && '🌱'}
-              {article.category === 'Technical Analysis' && '📈'}
-              {article.category === 'Psychology' && '🧠'}
-              {article.category === 'Commodities' && '🥇'}
-            </span>
-          </div>
+        <div className="article-card-image">
+          <img
+            src={article.image}
+            alt={article.title}
+            className="article-card-img"
+          />
+          <div className="article-card-img-overlay" style={{ background: `linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 60%, transparent 100%)` }} />
         </div>
         <div className="article-card-category-badge" style={{ background: color, color: '#000' }}>
           {article.category}
