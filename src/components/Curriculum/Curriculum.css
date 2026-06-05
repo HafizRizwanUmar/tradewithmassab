@@ -1,106 +1,704 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   Curriculum.css  —  Premium dark accordion curriculum section
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* ── CSS Variables ─────────────────────────────────────────────────────────── */
+:root {
+  --bg-primary: #050505;
+  --bg-secondary: #111111;
+  --accent-neon: #00ff41;
+  --accent-neon-dim: rgba(0, 255, 65, 0.12);
+  --accent-neon-glow: rgba(0, 255, 65, 0.35);
+  --text-primary: #fff;
+  --text-secondary: #a3a3a3;
+  --font-main: 'Plus Jakarta Sans', sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+  --border-radius-md: 12px;
+  --border-radius-sm: 8px;
+  --border-color: rgba(255, 255, 255, 0.07);
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --transition-fast: 0.2s ease;
+  --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Section Shell ─────────────────────────────────────────────────────────── */
 .curriculum-section {
-  padding: 8rem 0;
+  position: relative;
+  background: var(--bg-primary);
+  padding: 100px 0 120px;
+  overflow: hidden;
+  font-family: var(--font-main);
+}
+
+/* ── Ambient Blobs ─────────────────────────────────────────────────────────── */
+.curriculum-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.curriculum-blob--1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0, 255, 65, 0.06) 0%, transparent 70%);
+  top: -80px;
+  left: -120px;
+}
+
+.curriculum-blob--2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(0, 255, 65, 0.04) 0%, transparent 70%);
+  bottom: 0;
+  right: -80px;
+}
+
+/* ── Container ─────────────────────────────────────────────────────────────── */
+.curriculum-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── Header ────────────────────────────────────────────────────────────────── */
+.curriculum-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 60px;
+}
+
+.curriculum-label {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-neon);
+  background: var(--accent-neon-dim);
+  border: 1px solid rgba(0, 255, 65, 0.22);
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 22px;
+}
+
+.curriculum-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.15;
+  margin: 0 0 16px;
+  letter-spacing: -0.02em;
+}
+
+.curriculum-heading-accent {
+  color: var(--accent-neon);
   position: relative;
 }
 
-.curriculum-layout {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 4rem;
-  align-items: flex-start;
-  max-width: 1000px;
-  margin: 0 auto;
+.curriculum-subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin: 0 0 40px;
 }
 
-.curriculum-title {
-  font-size: 1.5rem;
+/* ── Tabs ──────────────────────────────────────────────────────────────────── */
+.curriculum-tabs {
+  display: inline-flex;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  border-radius: 100px;
+  padding: 5px;
+}
+
+.curriculum-tab {
+  padding: 10px 26px;
+  border-radius: 100px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+  white-space: nowrap;
+}
+
+.curriculum-tab:hover:not(.curriculum-tab--active) {
   color: var(--text-primary);
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  /* Align title slightly down to match the visual alignment with the first card's content */
-  margin-top: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
 }
 
-.curriculum-list {
+.curriculum-tab--active {
+  background: var(--accent-neon);
+  color: #050505;
+  box-shadow: 0 0 18px var(--accent-neon-glow);
+}
+
+/* ── Body Layout ───────────────────────────────────────────────────────────── */
+.curriculum-body {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 32px;
+  align-items: start;
+}
+
+/* ── Accordion Column ──────────────────────────────────────────────────────── */
+.curriculum-accordion-col {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 12px;
 }
 
-.curriculum-card {
-  background-color: #0f0f0f;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  padding: 2rem;
+/* ── Includes Banner (Mentorship) ──────────────────────────────────────────── */
+.curriculum-includes-banner {
   display: flex;
   align-items: flex-start;
-  gap: 1.5rem;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  gap: 14px;
+  background: linear-gradient(135deg, rgba(0, 255, 65, 0.1) 0%, rgba(0, 255, 65, 0.04) 100%);
+  border: 1px solid rgba(0, 255, 65, 0.3);
+  border-radius: var(--border-radius-md);
+  padding: 18px 20px;
 }
 
-.curriculum-card:hover {
-  background-color: #141414;
-  border-color: rgba(255, 255, 255, 0.1);
+.curriculum-includes-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  background: var(--accent-neon);
+  border-radius: 50%;
+  color: #050505;
+  margin-top: 1px;
 }
 
-.card-number {
-  font-size: 2rem;
+.curriculum-includes-banner strong {
+  display: block;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.curriculum-includes-banner p {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ── Modules Meta Bar ──────────────────────────────────────────────────────── */
+.curriculum-modules-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.curriculum-expand-all {
+  background: none;
+  border: none;
+  color: var(--accent-neon);
+  font-family: var(--font-main);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity var(--transition-fast);
+  letter-spacing: 0.01em;
+}
+
+.curriculum-expand-all:hover {
+  opacity: 0.75;
+}
+
+/* ── Accordion ─────────────────────────────────────────────────────────────── */
+.curriculum-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ── Accordion Item ────────────────────────────────────────────────────────── */
+.curriculum-accordion-item {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  transition: border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.curriculum-accordion-item:hover {
+  border-color: rgba(255, 255, 255, 0.13);
+}
+
+.curriculum-accordion-item--open {
+  border-color: rgba(0, 255, 65, 0.3);
+  box-shadow: 0 0 24px rgba(0, 255, 65, 0.06), 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* ── Accordion Header ──────────────────────────────────────────────────────── */
+.curriculum-accordion-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px 22px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background var(--transition-fast);
+}
+
+.curriculum-accordion-header:hover {
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.curriculum-accordion-item--open .curriculum-accordion-header {
+  background: rgba(0, 255, 65, 0.04);
+}
+
+.curriculum-accordion-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.curriculum-accordion-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* ── Module Number ─────────────────────────────────────────────────────────── */
+.curriculum-module-num {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.curriculum-accordion-item--open .curriculum-module-num {
+  color: var(--accent-neon);
+}
+
+.curriculum-module-num svg {
+  opacity: 0.7;
+}
+
+/* ── Module Title ──────────────────────────────────────────────────────────── */
+.curriculum-module-title {
+  font-family: var(--font-heading);
+  font-size: 0.975rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+  transition: color var(--transition-fast);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.curriculum-accordion-item--open .curriculum-module-title {
+  color: #fff;
+}
+
+/* ── Module Tag (e.g. Ongoing) ─────────────────────────────────────────────── */
+.curriculum-module-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #050505;
+  background: var(--accent-neon);
+  padding: 2px 9px;
+  border-radius: 100px;
+  flex-shrink: 0;
+}
+
+/* ── Lesson Count Badge ────────────────────────────────────────────────────── */
+.curriculum-lesson-badge {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 3px 11px;
+  border-radius: 100px;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.curriculum-accordion-item--open .curriculum-lesson-badge {
+  color: var(--accent-neon);
+  background: var(--accent-neon-dim);
+  border-color: rgba(0, 255, 65, 0.25);
+}
+
+/* ── Chevron ───────────────────────────────────────────────────────────────── */
+.curriculum-chevron {
+  color: var(--text-secondary);
+  transition: transform var(--transition-smooth), color var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.curriculum-chevron--open {
+  transform: rotate(180deg);
+  color: var(--accent-neon);
+}
+
+/* ── Accordion Body (collapse/expand) ─────────────────────────────────────── */
+.curriculum-accordion-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--transition-smooth);
+}
+
+.curriculum-accordion-item--open .curriculum-accordion-body {
+  grid-template-rows: 1fr;
+}
+
+/* Inner wrapper needed for grid-template-rows animation trick */
+.curriculum-lesson-list {
+  overflow: hidden;
+  list-style: none;
+  margin: 0;
+  padding: 0 22px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* ── Lesson Item ───────────────────────────────────────────────────────────── */
+.curriculum-lesson-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: var(--border-radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.curriculum-lesson-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.curriculum-lesson-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent-neon-dim);
+  color: var(--accent-neon);
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 255, 65, 0.18);
+  transition: background var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.curriculum-lesson-item:hover .curriculum-lesson-icon {
+  background: rgba(0, 255, 65, 0.18);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+}
+
+.curriculum-lesson-name {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  transition: color var(--transition-fast);
+}
+
+.curriculum-lesson-item:hover .curriculum-lesson-name {
+  color: var(--text-primary);
+}
+
+/* ── Sticky Summary Card ───────────────────────────────────────────────────── */
+.curriculum-summary-card {
+  position: sticky;
+  top: 100px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  padding: 28px 24px 24px;
+  overflow: hidden;
+  transition: border-color var(--transition-smooth);
+}
+
+.curriculum-summary-card:hover {
+  border-color: rgba(0, 255, 65, 0.2);
+}
+
+/* Neon glow shimmer at top */
+.curriculum-summary-glow {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: 120px;
+  background: radial-gradient(ellipse at center, rgba(0, 255, 65, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.curriculum-summary-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
   font-weight: 800;
-  color: #00ff41;
-  font-family: 'Courier New', Courier, monospace; /* To closely approximate the slashed zero tech look if font-variant fails */
-  line-height: 1;
-  margin-top: 0.1rem;
-}
-
-/* Specific styling for the zero to give it a slash if possible */
-.card-number span.zero {
+  color: var(--text-primary);
+  margin: 0 0 6px;
   position: relative;
-  display: inline-block;
 }
 
-.card-number span.zero::after {
+.curriculum-summary-subtitle {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin: 0;
+  position: relative;
+}
+
+.curriculum-summary-divider {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 20px 0;
+}
+
+/* ── Stats ─────────────────────────────────────────────────────────────────── */
+.curriculum-summary-stats {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+}
+
+.curriculum-summary-stats li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.curriculum-stat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: var(--accent-neon-dim);
+  border: 1px solid rgba(0, 255, 65, 0.18);
+  border-radius: var(--border-radius-sm);
+  color: var(--accent-neon);
+  flex-shrink: 0;
+}
+
+.curriculum-stat-value {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.curriculum-stat-label {
+  display: block;
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+}
+
+/* ── Features List ─────────────────────────────────────────────────────────── */
+.curriculum-summary-features {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+
+.curriculum-summary-features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.curriculum-feat-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--accent-neon);
+}
+
+/* ── Enroll Button ─────────────────────────────────────────────────────────── */
+.curriculum-enroll-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px 20px;
+  margin-top: 22px;
+  background: var(--accent-neon);
+  color: #050505;
+  font-family: var(--font-main);
+  font-size: 0.93rem;
+  font-weight: 800;
+  border-radius: var(--border-radius-md);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), opacity var(--transition-fast);
+  box-shadow: 0 4px 20px var(--accent-neon-glow);
+}
+
+.curriculum-enroll-btn::before {
   content: '';
   position: absolute;
-  top: 15%;
-  bottom: 15%;
-  left: 45%;
-  width: 2px;
-  background-color: #00ff41;
-  transform: rotate(25deg);
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
 }
 
-.card-content {
-  flex: 1;
+.curriculum-enroll-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px var(--accent-neon-glow);
 }
 
-.card-title {
-  font-size: 1.15rem;
-  margin-bottom: 0.4rem;
-  color: #ffffff;
-  font-weight: 700;
+.curriculum-enroll-btn:hover::before {
+  opacity: 1;
 }
 
-.card-desc {
-  color: #8c8c8c;
-  font-size: 0.9rem;
-  line-height: 1.6;
-  font-weight: 400;
+.curriculum-enroll-btn:active {
+  transform: translateY(0);
 }
 
-@media (max-width: 900px) {
-  .curriculum-layout {
+.curriculum-enroll-note {
+  text-align: center;
+  font-size: 0.74rem;
+  color: var(--text-secondary);
+  margin: 10px 0 0;
+  position: relative;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Responsive
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Tablet: collapse to single column, unstick card */
+@media (max-width: 1024px) {
+  .curriculum-body {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 40px;
   }
-  
-  .curriculum-title {
-    margin-top: 0;
+
+  .curriculum-summary-card {
+    position: static;
+    max-width: 560px;
+    margin: 0 auto;
+    width: 100%;
   }
 }
 
-@media (max-width: 600px) {
-  .curriculum-card {
-    padding: 1.5rem;
-    gap: 1.25rem;
+@media (max-width: 768px) {
+  .curriculum-section {
+    padding: 72px 0 88px;
+  }
+
+  .curriculum-header {
+    margin-bottom: 44px;
+  }
+
+  .curriculum-accordion-header {
+    padding: 16px 16px;
+  }
+
+  .curriculum-accordion-header-left {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .curriculum-module-title {
+    font-size: 0.9rem;
+    white-space: normal;
+  }
+
+  .curriculum-module-num {
+    font-size: 0.68rem;
+  }
+
+  .curriculum-lesson-list {
+    padding: 0 14px 14px;
+  }
+
+  .curriculum-lesson-item {
+    padding: 8px 10px;
+  }
+
+  .curriculum-tabs {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .curriculum-tab {
+    flex: 1;
+    text-align: center;
+    padding: 10px 14px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .curriculum-accordion-header-right {
+    gap: 8px;
+  }
+
+  .curriculum-lesson-badge {
+    display: none;
+  }
+
+  .curriculum-includes-banner {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .curriculum-modules-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
   }
 }

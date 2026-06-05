@@ -5,8 +5,11 @@ import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
 import AboutMassab from './components/AboutMassab/AboutMassab';
 import WhyUs from './components/WhyUs/WhyUs';
+import Curriculum from './components/Curriculum/Curriculum';
 import Results from './components/Results/Results';
+import Testimonials from './components/Testimonials/Testimonials';
 import Pricing from './components/Pricing/Pricing';
+import FAQ from './components/FAQ/FAQ';
 import Community from './components/Community/Community';
 import Articles from './components/Articles/Articles';
 import Footer from './components/Footer/Footer';
@@ -25,9 +28,12 @@ const HomePage = () => (
       <Hero />
       <AboutMassab />
       <WhyUs />
+      <Curriculum />
       <Results />
+      <Testimonials />
       <Articles />
       <Pricing />
+      <FAQ />
       <Community />
     </main>
     <Footer />
