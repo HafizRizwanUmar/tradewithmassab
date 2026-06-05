@@ -2,10 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import './Results.css';
 
 const stats = [
-  { value: 2400, suffix: '+', label: 'Students Enrolled', icon: '👨‍🎓' },
-  { value: 87, suffix: '%', label: 'Student Win Rate', icon: '🎯' },
-  { value: 5, suffix: 'x', label: 'Avg. ROI in 90 Days', icon: '📈' },
-  { value: 12, suffix: 'M+', label: 'Pips Generated Live', icon: '💹' },
+  { value: 340, suffix: '+', label: 'Students Enrolled', icon: '👨‍🎓' },
+  { value: 73, suffix: '%', label: 'Student Win Rate', icon: '🎯' },
+  { value: 24, suffix: '', label: 'Avg. Risk:Reward (1:2.4)', icon: '📈' },
+  { value: 180, suffix: 'K+', label: 'Pips Documented Live', icon: '💹' },
 ];
 
 const trades = [
@@ -133,8 +133,8 @@ const Results = () => {
               ))}
             </div>
             <div>
-              <h3 className="results-cta-heading">Join 2,400+ Winning Traders</h3>
-              <p className="results-cta-sub">Start your journey today. The market waits for no one.</p>
+              <h3 className="results-cta-heading">Join 340+ Traders Learning to Win</h3>
+              <p className="results-cta-sub">Real strategies. Real mentorship. Start your journey today.</p>
             </div>
           </div>
           <button className="btn-neon results-cta-btn">

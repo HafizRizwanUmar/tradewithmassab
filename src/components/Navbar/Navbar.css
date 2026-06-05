@@ -53,9 +53,39 @@
   color: var(--text-primary);
 }
 
+.nav-articles-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.nav-articles-link:hover { color: var(--text-primary); }
+
+.nav-free-badge {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  background: var(--accent-neon);
+  color: #000;
+  padding: 1px 6px;
+  border-radius: 4px;
+  line-height: 1.6;
+}
+
 .nav-actions {
   display: flex;
   gap: 1rem;
+}
+
+.nav-whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.85rem;
+  padding: 9px 18px;
 }
 
 @media (max-width: 900px) {

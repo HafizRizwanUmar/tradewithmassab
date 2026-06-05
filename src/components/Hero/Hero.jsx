@@ -65,7 +65,7 @@ const Hero = () => {
           </div>
           <div className="hero-trust-text">
             <span className="hero-trust-stars">★★★★★</span>
-            <span className="hero-trust-label">2,400+ students enrolled</span>
+            <span className="hero-trust-label">340+ students enrolled</span>
           </div>
         </div>
 

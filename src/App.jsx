@@ -12,6 +12,7 @@ import Articles from './components/Articles/Articles';
 import Footer from './components/Footer/Footer';
 import WhatsAppButton from './components/WhatsAppButton/WhatsAppButton';
 import ArticleDetail from './pages/ArticleDetail/ArticleDetail';
+import AllArticles from './pages/AllArticles/AllArticles';
 import ScrollAnimations from './components/ScrollAnimations/ScrollAnimations';
 
 // Home page component
@@ -39,6 +40,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/articles" element={<AllArticles />} />
       <Route path="/articles/:slug" element={<ArticleDetail />} />
     </Routes>
   );
